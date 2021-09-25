@@ -1,0 +1,35 @@
+#General configuration
+server:
+  port: 9090
+  servlet:
+    context-path: /api/v1/library
+
+
+# Data source configuration
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+    database: mysql
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  datasource:
+    initialization-mode: embedded
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;mode=mysql
+    username: sa
+    password: sa
+  main:
+    allow-bean-definition-overriding: true
